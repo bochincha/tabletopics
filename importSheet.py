@@ -75,9 +75,9 @@ def formatUtterance(str):
 # http://stackoverflow.com/questions/372885/how-do-i-connect-to-a-mysql-database-in-python
 db = MySQLdb.connect(  \
 	host   = "localhost", # your host, usually localhost \
-	user   = "ademir", \
-	passwd = "ademir", \
-	db     = "ademir")
+	user   = "root", \
+	passwd = "somethingsimple", \
+	db     = "ECASTv1")
 
 # This cursor will execute all the queries you need
 cur = db.cursor()
@@ -117,11 +117,11 @@ with open(csvfile, 'rb') as csvfile:
 			#print "Processing dialog for %s"%(line[0])
 			speaker   = db.escape_string(formatSpeaker(line[0]))
 			utterance = db.escape_string(formatUtterance(line[1]))
-			comment   = db.escape_string(line[7])
+			comments   = db.escape_string(line[7])
 
 			try:
 				# Save this dialog
-				query = "INSERT INTO dialog (table_id, speaker_id, utterance, comment) VALUES(%d, '%s', '%s', '%s')"%(table_id, speaker, utterance, comment)
+				query = "INSERT INTO dialog (table_id, speaker_id, utterance, comments) VALUES(%d, '%s', '%s', '%s')"%(table_id, speaker, utterance, comments)
 				cur.execute(query)
 				db.commit()
 			except:
@@ -163,6 +163,3 @@ with open(csvfile, 'rb') as csvfile:
 			db.commit()
 
 		#print "%d:"%(row) + ', '.join(line)
-
-
-# vim:set et sw=4 ts=4 sts=0 noet:
