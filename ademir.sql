@@ -5,7 +5,7 @@ SET foreign_key_checks = 1;
 
 CREATE TABLE dialog (
    dialog_id int NOT NULL AUTO_INCREMENT,
-	table_id int,
+   table_id int,
    speaker_id varchar(10),
    utterance text,
    comment text COMMENT 'Ademir\'s comment on utterance',

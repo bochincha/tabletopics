@@ -46,13 +46,13 @@ for option, argument in opts:
 		Clears all data in database before starting
 
 Please note, this file was written quickly, designed without flexibility in mind, implemented in the most basic way practical, and was only tested on one sheet."""
-		
+
 	elif option == "-t":
 		table_id = int(argument)
-		
+
 	elif option == "-f":
 		csvfile = argument
-		
+
 	elif option in ("-v", "--prune"):
 		prune = True
 
@@ -108,7 +108,7 @@ with open(csvfile, 'rb') as csvfile:
 	for row,line in enumerate(dialogs):
 		# Skip the first two lines, no data there
 		if row<=2:
-			continue 
+			continue
 
 		# If the first cell has content, consider this the start of a new line
 		# of dialog
