@@ -124,9 +124,10 @@ with open(csvfile, 'rb') as csvfile:
 				query = "INSERT INTO dialog (table_id, speaker_id, utterance, comment) VALUES(%d, '%s', '%s', '%s')"%(table_id, speaker, utterance, comment)
 				cur.execute(query)
 				db.commit()
-			except:
+			except Exception as e:
 				# Rollback in case there is any error
 				print "Something went wrong inserting into dialog"
+				print e
 				db.rollback()
 				exit(0);
 
